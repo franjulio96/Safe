@@ -1,0 +1,57 @@
+#include <IRremote.h>
+int receiverpin=10;
+int buzzer = 13;
+int green =  3;
+int red1  =  5;
+int red2  =  6;
+int red3  =  9;
+int power = 0xA90;
+int num1 = 0x290;
+int num2 = 0x810;
+int num3 = 0x410;
+int num4 = 0xC10;
+int num5 = 0x210;
+int num6 = 0xA10;
+int num7 = 0x610;
+int num8 = 0xE10;
+int num9 = 0x110;
+int num0 = 0x910;
+int tries=0;
+IRrecv irrecv(receiverpin);
+decode_results results;
+
+
+void setup(){
+  Serial.begin(9600);
+  irrecv.enableIRIn();
+  pinMode (buzzer,OUTPUT);
+  pinMode (green,OUTPUT);
+  pinMode (red1,OUTPUT);
+  pinMode (red2,OUTPUT);
+  pinMode (red3,OUTPUT);
+  analogWrite(green,0);
+  analogWrite(red1,0);
+  analogWrite(red2,0);
+  analogWrite(red3,0);
+  }
+  char guess[4];
+  int counter = 0;
+  char correct[4]={num7,num1,num3,num9};
+  int brightness = 200;
+  
+void loop(){
+  if(irrecv.decode(results)){
+    if (result.value=="power"){
+     Serial.print("Enter PASSWORD");
+     digitalWrite(green,HIGH);
+     digitalWrite(red1,HIGH);
+     digitalWrite(red2,HIGH);
+     digitalWrite(red3,HIGH);
+     digitalWrite(buzzer,HIGH);
+     delay(1000);
+     digitalWrite(green,LOW);
+     digitalWrite(red1,LOW);
+     digitalWrite(red2,LOW);
+     digitalWrite(red3,LOW);
+     counter=0;
+    }
