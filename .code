@@ -72,69 +72,69 @@ void loop(){
         delay(100);
         counter++;
         break;
-     case 0xC10:
-       number = 4;
-       guess[counter]=number;
-       Serial.println(number);
-       delay(100);
-       counter++;
-       break;
-     case 0x210:
-       number = 5;
-       guess[counter]=number;
-       Serial.println(number);
-       delay(100);
-       counter++;
-       break;
-     case 0xA10:
+      case 0xC10:
+        number = 4;
+        guess[counter]=number;
+        Serial.println(number);
+        delay(100);
+        counter++;
+        break;
+      case 0x210:
+        number = 5;
+        guess[counter]=number;
+        Serial.println(number);
+        delay(100);
+        counter++;
+        break;
+      case 0xA10:
         number = 6;
         guess[counter]=number;
         Serial.println(number);
         delay(100);
         counter++;
         break;
-     case 0x610:
+      case 0x610:
         number = 7;
         guess[counter]=number;
         Serial.println(number);
         delay(100);
         counter++;
         break;
-     case 0xE10:
+      case 0xE10:
         number = 8;
         guess[counter]=number;
         Serial.println(number);
         delay(100);
         counter++;
         break;
-     case 0x110:
+      case 0x110:
         number = 9;
         guess[counter]=number;
         Serial.println(number);
         delay(100);
         counter++;
         break;
-    case 0x910:
+      case 0x910:
         number = 0;
         guess[counter]=number;
         Serial.println(number);
         delay(100);
         counter++;
         break;
-     case 0xD10:      //add case for enter
+      case 0xD10:      //add case for enter
         if (correct[0] == guess[0] && correct[1] == guess[1] && correct[2] == guess[2] && correct[3] == guess[3]){
            digitalWrite(green,HIGH);
            digitalWrite(red1,LOW);
            digitalWrite(red2,LOW);
            digitalWrite(red3,LOW);
-           digitalWrite(buzzer,LOW);
+           analogWrite(buzzer,0);
            err=0;
           }
     
          else  {
            digitalWrite(buzzer,HIGH);
            delay(1000);
-           digitalWrite(buzzer,LOW);
+           analogWrite(buzzer,0);
            counter=0;
            err++;
          }
@@ -143,15 +143,15 @@ void loop(){
           digitalWrite(red1,HIGH);
           digitalWrite(red2,LOW);
           digitalWrite(red3,LOW);
-          digitalWrite(buzzer,LOW);
+          analogWrite(buzzer,0);
       
          }
-       else if (err==2){
+        else if (err==2){
          digitalWrite(green,LOW);
          digitalWrite(red1,HIGH);
          digitalWrite(red2,HIGH);
          digitalWrite(red3,LOW);
-         digitalWrite(buzzer,LOW);
+         analogWrite(buzzer,0);
       
        } 
       else if (err==3){
